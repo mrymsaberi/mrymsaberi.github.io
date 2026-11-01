@@ -16,7 +16,7 @@
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "Person", "name": "Maryam Saberi",
  "jobTitle": "Ph.D. Candidate in Electrical Engineering", "affiliation": {"@type": "CollegeOrUniversity", "name": "Pennsylvania State University"},
- "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Pennsylvania State University"}, {"@type": "CollegeOrUniversity", "name": "University of Alabama at Birmingham"}, {"@type": "CollegeOrUniversity", "name": "Islamic Azad University of Mashhad"}, {"@type": "CollegeOrUniversity", "name": "Sadjad University of Technology"}],
+ "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Pennsylvania State University"}, {"@type": "CollegeOrUniversity", "name": "Islamic Azad University of Mashhad"}, {"@type": "CollegeOrUniversity", "name": "Sadjad University of Technology"}],
  "knowsAbout": ["LiDAR-inertial odometry", "SLAM", "Sensor fusion", "Kalman filtering", "State estimation", "Robotic localization"],
  "url": "https://mrymsaberi.github.io/", "image": "https://mrymsaberi.github.io/photo.jpg",
  "email": "mailto:mfs6544@psu.edu", "sameAs": ["https://www.linkedin.com/in/mrym-saberi"]}
@@ -131,6 +131,15 @@ h3 { font-family: var(--display); font-size: 19px; font-weight: 600; margin: 0; 
 .edu h3 { margin-top: 6px; }
 .edu .s { color: var(--text); font-size: 15px; margin: 4px 0 0; }
 .edu p { color: var(--muted); font-size: 14.5px; margin: 8px 0 0; }
+.grid.edu { grid-template-columns: repeat(2, 1fr); }
+
+.awards { display: grid; gap: 14px; }
+.award { display: flex; gap: 18px; align-items: flex-start; }
+.award .icon { flex: none; width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; color: var(--accent); background: var(--panel2); border: 1px solid var(--line); box-shadow: 0 0 18px rgba(45,212,191,.12); }
+.award .icon svg { width: 24px; height: 24px; }
+.award .y { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+.award h3 { margin-top: 4px; }
+.award p { color: var(--muted); font-size: 14.5px; margin: 4px 0 0; }
 
 /* contact as a terminal */
 .term { margin: 84px 0 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--panel); }
@@ -157,7 +166,7 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
   .hero h1 { font-size: 46px; }
   .stats { grid-template-columns: 1fr; }
   .stats li { border-right: 0; border-top: 1px solid var(--line); padding: 18px 0; }
-  .grid, .skills { grid-template-columns: 1fr; }
+  .grid, .grid.edu, .skills { grid-template-columns: 1fr; }
   .skills .panel, .skills .panel:nth-child(4), .skills .panel:nth-child(5) { grid-column: auto; }
   .sh h2 { font-size: 28px; }
   .tl .item { grid-template-columns: 1fr; gap: 4px; padding-left: 20px; }
@@ -171,7 +180,7 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="#">maryam<span>.</span>saberi</a>
-  <nav aria-label="Sections" id="site-menu"><a href="#expertise">expertise</a><a href="#research">research</a><a href="#experience">experience</a><a href="#publications">publications</a><a href="#education">education</a><a href="#contact">contact</a></nav>
+  <nav aria-label="Sections" id="site-menu"><a href="#expertise">expertise</a><a href="#research">research</a><a href="#experience">experience</a><a href="#publications">publications</a><a href="#education">education</a><a href="#awards">awards</a><a href="#contact">contact</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu">menu</button>
 </div></header>
 
@@ -278,10 +287,18 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
     <div class="grid edu">
       <div class="panel"><span class="y">2022 → 2027 (exp.)</span><h3>Ph.D., Electrical Engineering</h3><p class="s">Pennsylvania State University</p><p>CARL. Research: adaptive Kalman filtering, nonlinear estimation, robust LiDAR-inertial odometry, and compensation for unknown measurement and process disturbances.</p></div>
       <div class="panel"><span class="y">2022 → 2024</span><h3>M.S., Electrical Engineering</h3><p class="s">Pennsylvania State University</p><p>Project: Adaptive Kalman Filtering for Systems Under the Influence of Unknown External Observation Noises.</p></div>
-      <div class="panel"><span class="y">2020 → 2021</span><h3>Research Assistant</h3><p class="s">University of Alabama at Birmingham</p><p>BIC Design Laboratory. Research: low-cost printed sensing systems and energy-efficient integrated circuits.</p></div>
       <div class="panel"><span class="y">2013 → 2016</span><h3>M.S., Biomedical Engineering</h3><p class="s">Islamic Azad University of Mashhad</p><p>Bioelectric, Neuromuscular and Rehabilitation Lab. Thesis: adaptive muscle synergy modeling for elbow muscle activation during hand reaching.</p></div>
       <div class="panel"><span class="y">2008 → 2012</span><h3>B.S., Electrical Engineering</h3><p class="s">Sadjad University of Technology</p><p>Thesis: design and fabrication of an electrical nursing system for vital-sign monitoring.</p></div>
-      <div class="panel"><span class="y">award · 2024</span><h3>Melvin P. Bloom Memorial Graduate Fellowship</h3><p class="s">Electrical Engineering</p></div>
+    </div>
+  </section>
+
+  <section id="awards">
+    <div class="sh"><span class="n">06</span><h2>Awards</h2></div>
+    <div class="awards">
+      <div class="panel award">
+        <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 7.2 5-2.6 5 2.6-1.5-7.2"/></svg></span>
+        <div><span class="y">spring 2024</span><h3>Melvin P. Bloom Memorial Graduate Fellowship</h3><p>Graduate fellowship in Electrical Engineering</p></div>
+      </div>
     </div>
   </section>
 
