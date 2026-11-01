@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07090c">
+<meta name="description" content="Maryam Saberi, Ph.D. candidate in Electrical Engineering at Penn State: robotic localization, LiDAR-inertial odometry, SLAM, sensor fusion and adaptive state estimation. Research, publications and CV.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Maryam Saberi | Robotic Localization and State Estimation">
+<meta property="og:description" content="Ph.D. candidate in Electrical Engineering at Penn State: LiDAR-inertial odometry, SLAM, sensor fusion and adaptive Kalman filtering.">
+<meta property="og:url" content="https://mrymsaberi.github.io/">
+<meta property="og:image" content="https://mrymsaberi.github.io/photo.jpg">
+<meta property="og:image:alt" content="Maryam Saberi">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://mrymsaberi.github.io/">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Person", "name": "Maryam Saberi",
+ "jobTitle": "Ph.D. Candidate in Electrical Engineering", "affiliation": {"@type": "CollegeOrUniversity", "name": "Pennsylvania State University"},
+ "alumniOf": [{"@type": "CollegeOrUniversity", "name": "Pennsylvania State University"}, {"@type": "CollegeOrUniversity", "name": "University of Alabama at Birmingham"}, {"@type": "CollegeOrUniversity", "name": "Islamic Azad University of Mashhad"}, {"@type": "CollegeOrUniversity", "name": "Sadjad University of Technology"}],
+ "knowsAbout": ["LiDAR-inertial odometry", "SLAM", "Sensor fusion", "Kalman filtering", "State estimation", "Robotic localization"],
+ "url": "https://mrymsaberi.github.io/", "image": "https://mrymsaberi.github.io/photo.jpg",
+ "email": "mailto:mfs6544@psu.edu", "sameAs": ["https://www.linkedin.com/in/mrym-saberi"]}
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307090c'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='700' fill='%232dd4bf' text-anchor='middle'%3EMS%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<title>Maryam Saberi | Robotic Localization and State Estimation</title>
+<style>
+:root { --bg:#07090c; --panel:#0d1116; --panel2:#111720; --line:#1c252f; --text:#e6edf3; --muted:#8d9aa9; --accent:#2dd4bf; --accent2:#60a5fa;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace; --display: "Space Grotesk", Inter, sans-serif; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; color-scheme: dark; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.65 Inter, -apple-system, "Segoe UI", Roboto, sans-serif; }
+a { color: var(--accent); text-decoration: none; } a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+.mono { font-family: var(--mono); }
+
+/* top bar */
+header.bar { position: fixed; inset: 0 0 auto 0; z-index: 10; background: rgba(7,9,12,.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+header.bar .wrap { display: flex; align-items: center; gap: 24px; min-height: 58px; }
+.brand { font-family: var(--mono); font-weight: 600; color: var(--text); margin-right: auto; }
+.brand span { color: var(--accent); }
+.brand:hover { text-decoration: none; }
+header.bar nav { display: flex; gap: 22px; }
+header.bar nav a { font-family: var(--mono); font-size: 13px; color: var(--muted); text-transform: lowercase; }
+header.bar nav a:hover, header.bar nav a.active { color: var(--accent); text-decoration: none; }
+.menu-btn { display: none; font-family: var(--mono); font-size: 13px; color: var(--text); background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+
+/* hero with live point cloud */
+.hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; border-bottom: 1px solid var(--line); padding: 110px 0 70px; }
+#cloud { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(90deg, var(--bg) 0%, rgba(7,9,12,.85) 32%, rgba(7,9,12,.15) 58%, transparent 100%), linear-gradient(0deg, var(--bg) 0%, transparent 25%); }
+.hero .wrap { position: relative; z-index: 2; width: 100%; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+.label { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: .02em; }
+.hero h1 { font-family: var(--display); font-size: 76px; line-height: 1; letter-spacing: -0.035em; margin: 14px 0 16px; }
+.hero .role { font-size: 20px; color: var(--text); margin: 0 0 18px; max-width: 30em; }
+.hero .role b { color: var(--accent); font-weight: 600; }
+.hero .bio { color: var(--muted); max-width: 36em; margin: 0 0 28px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { font-family: var(--mono); font-size: 14px; font-weight: 600; padding: 11px 18px; border-radius: 8px; border: 1px solid var(--line); color: var(--text); background: rgba(13,17,22,.7); }
+.btn:hover { text-decoration: none; border-color: var(--accent); }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #032019; }
+.btn.primary:hover { filter: brightness(1.1); }
+/* the photo inside detection-box corners */
+.frame { position: relative; padding: 14px; }
+.frame img { display: block; width: 230px; height: 270px; object-fit: cover; border-radius: 12px; filter: saturate(.95); }
+.frame i { position: absolute; width: 26px; height: 26px; border: 2px solid var(--accent); }
+.frame i:nth-of-type(1) { top: 0; left: 0; border-right: 0; border-bottom: 0; }
+.frame i:nth-of-type(2) { top: 0; right: 0; border-left: 0; border-bottom: 0; }
+.frame i:nth-of-type(3) { bottom: 0; left: 0; border-right: 0; border-top: 0; }
+.frame i:nth-of-type(4) { bottom: 0; right: 0; border-left: 0; border-top: 0; }
+
+/* stats strip */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); list-style: none; margin: 0 auto; padding: 0; border-bottom: 1px solid var(--line); }
+.stats li { padding: 26px 28px; border-right: 1px solid var(--line); }
+.stats li:last-child { border-right: 0; }
+.stats b { display: block; font-family: var(--display); font-size: 40px; line-height: 1.05; color: var(--text); }
+.stats span { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+
+/* sections */
+section { padding: 84px 0 0; }
+.sh { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; }
+.sh .n { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+.sh h2 { font-family: var(--display); font-size: 36px; letter-spacing: -0.02em; margin: 0; }
+.sh::after { content: ""; flex: 1; height: 1px; background: var(--line); align-self: center; }
+h3 { font-family: var(--display); font-size: 19px; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.skills { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.skills .panel { grid-column: span 2; }
+.skills .panel:nth-child(4), .skills .panel:nth-child(5) { grid-column: span 3; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.tags span { font-family: var(--mono); font-size: 12.5px; color: var(--text); border: 1px solid var(--line); background: var(--panel2); border-radius: 6px; padding: 3px 9px; }
+
+.proj { padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
+.proj:hover { border-color: rgba(45,212,191,.5); transform: translateY(-2px); }
+/* hue-rotate turns the warm illustrations teal; remove .tint when you use real figures */
+.proj img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--line); }
+.proj img.tint { filter: hue-rotate(155deg) saturate(1.1); }
+.proj .body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+.proj .k { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 6px; }
+.proj p { color: var(--muted); font-size: 15px; margin: 8px 0 0; }
+.proj .out { margin-top: auto; padding-top: 14px; font-family: var(--mono); font-size: 12.5px; color: var(--text); }
+
+.tl { display: grid; gap: 0; border-left: 1px solid var(--line); margin-left: 6px; }
+.tl .item { position: relative; display: grid; grid-template-columns: 170px 1fr; gap: 18px; padding: 0 0 30px 28px; }
+.tl .item::before { content: ""; position: absolute; left: -5px; top: 7px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--bg), 0 0 14px rgba(45,212,191,.6); }
+.tl .d { font-family: var(--mono); font-size: 13px; color: var(--muted); padding-top: 2px; }
+.tl .w { color: var(--muted); font-size: 15px; }
+.tl ul { margin: 10px 0 0; padding-left: 18px; } .tl li { margin: 5px 0; font-size: 15.5px; color: #c9d3dd; }
+.tl li::marker { color: var(--accent); }
+.tl p { margin: 8px 0 0; font-size: 15.5px; color: #c9d3dd; }
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.filters button { font-family: var(--mono); font-size: 13px; padding: 7px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--muted); cursor: pointer; }
+.filters button[aria-pressed="true"] { color: #032019; background: var(--accent); border-color: var(--accent); }
+.pubs { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.pub { display: grid; grid-template-columns: 84px 1fr auto; gap: 18px; padding: 18px 22px; border-top: 1px solid var(--line); background: var(--panel); }
+.pub:first-child { border-top: 0; }
+.pub[hidden] { display: none; }
+.pub .k { font-family: var(--mono); font-size: 12.5px; color: var(--accent); padding-top: 2px; }
+.pub .k small { display: block; color: var(--muted); font-size: 12px; }
+.pub .ti { display: block; font-weight: 600; }
+.pub .au, .pub .ve { display: block; font-size: 14.5px; color: var(--muted); }
+.pub .me { color: var(--text); }
+.pub a.go { align-self: center; font-family: var(--mono); font-size: 12.5px; white-space: nowrap; border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; }
+
+.edu .y { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+.edu h3 { margin-top: 6px; }
+.edu .s { color: var(--text); font-size: 15px; margin: 4px 0 0; }
+.edu p { color: var(--muted); font-size: 14.5px; margin: 8px 0 0; }
+
+/* contact as a terminal */
+.term { margin: 84px 0 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--panel); }
+.term .top { display: flex; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--panel2); }
+.term .top i { width: 11px; height: 11px; border-radius: 50%; background: #2a333e; }
+.term pre { margin: 0; padding: 22px 24px 8px; font-family: var(--mono); font-size: 14.5px; line-height: 1.8; color: var(--text); white-space: pre-wrap; }
+.term pre .p { color: var(--accent); }
+.term pre .c { color: var(--muted); }
+.term .btns { padding: 8px 24px 24px; }
+footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; padding: 28px 0 60px; }
+
+@media (max-width: 900px) {
+  .wrap { padding: 0 16px; }
+  .menu-btn { display: inline-block; }
+  header.bar nav { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 4px 16px 10px; }
+  header.bar.open nav { display: flex; }
+  header.bar nav a { font-size: 15px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  header.bar nav a:last-child { border-bottom: 0; }
+  .hero { min-height: auto; padding: 96px 0 56px; }
+  .hero::before { background: linear-gradient(0deg, var(--bg) 0%, rgba(7,9,12,.9) 55%, rgba(7,9,12,.2) 80%, transparent 100%); }
+  .hero .wrap { grid-template-columns: 1fr; gap: 28px; }
+  .frame { order: -1; justify-self: start; }
+  .frame img { width: 150px; height: 175px; }
+  .hero h1 { font-size: 46px; }
+  .stats { grid-template-columns: 1fr; }
+  .stats li { border-right: 0; border-top: 1px solid var(--line); padding: 18px 0; }
+  .grid, .skills { grid-template-columns: 1fr; }
+  .skills .panel, .skills .panel:nth-child(4), .skills .panel:nth-child(5) { grid-column: auto; }
+  .sh h2 { font-size: 28px; }
+  .tl .item { grid-template-columns: 1fr; gap: 4px; padding-left: 20px; }
+  .pub { grid-template-columns: 1fr; gap: 6px; padding: 16px; }
+  .pub a.go { justify-self: start; }
+  .term pre { font-size: 13px; padding: 18px 16px 6px; }
+  .term .btns { padding: 8px 16px 18px; }
+}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="brand" href="#">maryam<span>.</span>saberi</a>
+  <nav aria-label="Sections" id="site-menu"><a href="#expertise">expertise</a><a href="#research">research</a><a href="#experience">experience</a><a href="#publications">publications</a><a href="#education">education</a><a href="#contact">contact</a></nav>
+  <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu">menu</button>
+</div></header>
+
+<div class="hero">
+  <canvas id="cloud" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <span class="label">// Ph.D. candidate · Electrical Engineering · Penn State</span>
+      <h1>Maryam Saberi</h1>
+      <p class="role">Robust <b>robotic localization</b>: LiDAR-inertial odometry, SLAM and adaptive state estimation.</p>
+      <p class="bio">I work on making robot localization hold up when its sensors misbehave. In the Control and Autonomous Robotics Lab (CARL) at Penn State, I develop adaptive estimation methods that keep localization accurate under unknown IMU disturbances, unknown and possibly nonzero-mean measurement noise, and model uncertainty. My recent work builds these methods into Point-LIO for robust, efficient LiDAR-inertial odometry, tested in ROS and ROS 2 simulation. I expect to complete my Ph.D. in Spring 2027.</p>
+      <div class="btns">
+        <a class="btn primary" href="Maryam_Saberi_CV.pdf">download_cv.pdf</a>
+        <a class="btn" href="mailto:mfs6544@psu.edu">email</a>
+        <a class="btn" href="https://linkedin.com/in/mrym-saberi">linkedin</a>
+      </div>
+    </div>
+    <div class="frame"><i></i><i></i><i></i><i></i><img src="photo.jpg" alt="Maryam Saberi"></div>
+  </div>
+</div>
+
+<ul class="stats wrap">
+  <li><b>7</b><span>papers · 4 published · 3 under review</span></li>
+  <li><b>4 yrs</b><span>robotics + estimation research at CARL</span></li>
+  <li><b>2027</b><span>Ph.D. expected · Spring</span></li>
+</ul>
+
+<main class="wrap">
+  <section id="expertise">
+    <div class="sh"><span class="n">01</span><h2>Expertise</h2></div>
+    <div class="skills">
+      <div class="panel"><h3>Localization and SLAM</h3><div class="tags"><span>LiDAR-inertial odometry</span><span>SLAM</span><span>point cloud mapping</span><span>Point-LIO</span><span>Fast-LIO</span><span>LiDAR/IMU processing</span></div></div>
+      <div class="panel"><h3>State estimation</h3><div class="tags"><span>Kalman filter</span><span>EKF</span><span>UKF</span><span>adaptive filtering</span><span>nonlinear filtering</span><span>sensor fusion</span><span>disturbance compensation</span></div></div>
+      <div class="panel"><h3>Robotics software</h3><div class="tags"><span>ROS</span><span>ROS 2</span><span>NVIDIA Isaac Sim</span><span>robotics simulation</span><span>Linux</span></div></div>
+      <div class="panel"><h3>Analysis and validation</h3><div class="tags"><span>Monte Carlo evaluation</span><span>numerical simulation</span><span>error analysis</span><span>computational benchmarking</span><span>control theory</span></div></div>
+      <div class="panel"><h3>Programming and tools</h3><div class="tags"><span>Python</span><span>MATLAB</span><span>LaTeX</span><span>Multisim</span></div></div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="sh"><span class="n">02</span><h2>Research</h2></div>
+    <div class="grid">
+      <article class="panel proj">
+        <img class="tint" src="media/lio.svg" alt="Illustration: a LiDAR scan with a compensated trajectory and a drifting one" loading="lazy">
+        <div class="body"><span class="k">lidar-inertial odometry</span>
+          <h3>Robust Point-LIO under unknown IMU disturbances</h3>
+          <p>Studied how unknown external IMU disturbances degrade Point-LIO localization, and developed an adaptive EKF that estimates and compensates for them online. A reduced-state formulation cuts the estimator state from 24 to 18 dimensions while still estimating the unknown sensor disturbances.</p>
+          <span class="out">→ under review, IEEE RA-L</span></div>
+      </article>
+      <article class="panel proj">
+        <img class="tint" src="media/akf.svg" alt="Illustration: biased, noisy measurements and a filter estimate tracking the true signal" loading="lazy">
+        <div class="body"><span class="k">adaptive filtering</span>
+          <h3>Adaptive Kalman filtering for unknown noise</h3>
+          <p>Kalman filters that stay accurate when the measurement noise is unknown and may have a nonzero mean, and when unknown measurement noise and model uncertainty act at the same time.</p>
+          <span class="out">→ <a href="https://doi.org/10.1109/LSP.2026.3657705">IEEE SPL 2026</a> · 1 under review</span></div>
+      </article>
+      <article class="panel proj">
+        <img class="tint" src="media/nonlinear.svg" alt="Illustration: a nonlinear measurement function, its linearization and the resulting distributions" loading="lazy">
+        <div class="body"><span class="k">nonlinear estimation</span>
+          <h3>Nonlinear and learning-based estimation</h3>
+          <p>Reducing the observation linearization errors of the extended Kalman filter through adaptation; nonlinear Kalman filtering when the measurements have no direct functional relationship to the state; and PRECONET, a Kalman-filter-inspired predictor-corrector estimator trained with massively parallel reinforcement learning.</p>
+          <span class="out">→ ACC 2026 · <a href="https://doi.org/10.1109/LCSYS.2024.3514818">IEEE L-CSS 2024</a> · 1 under review</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="sh"><span class="n">03</span><h2>Experience</h2></div>
+    <div class="tl">
+      <div class="item"><span class="d">2022 fall → now</span><div><h3>Research Assistant</h3><span class="w">Control and Autonomous Robotics Lab (CARL), Penn State</span>
+        <ul>
+          <li><b>Robust LiDAR-inertial odometry:</b> investigated the impact of unknown external IMU disturbances on Point-LIO localization and developed an adaptive EKF-based disturbance compensation approach to improve robustness.</li>
+          <li><b>Efficient state estimation:</b> developed a reduced-state Point-LIO formulation that shrinks the estimator state from 24 to 18 (a 25% reduction) while estimating unknown sensor disturbances online.</li>
+          <li><b>Adaptive estimation:</b> developed and evaluated adaptive Kalman filtering algorithms for unknown measurement noise, nonlinear observation errors, and simultaneous measurement and model uncertainty.</li>
+          <li><b>Validation:</b> numerical simulations, Monte Carlo evaluations, error comparisons and computational benchmarking.</li>
+        </ul></div></div>
+      <div class="item"><span class="d">2024 spring → now</span><div><h3>Teaching Assistant, Circuits and Devices (EE 210)</h3><span class="w">Penn State</span><p>Support laboratory experiments, circuit debugging, and instruction in fundamental electrical engineering measurements and devices.</p></div></div>
+      <div class="item"><span class="d">2020 → 2021</span><div><h3>Research Assistant</h3><span class="w">Bio-inspired Integrated Circuit (BIC) Design Laboratory, University of Alabama at Birmingham</span><p>Researched sensing and classification methods and low-cost printed sensing technologies, including machine-learning-based contactless pH sensing.</p></div></div>
+      <div class="item"><span class="d">2015 → 2017</span><div><h3>Technical Manager</h3><span class="w">Avin Exon Pars Ltd</span></div></div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="sh"><span class="n">04</span><h2>Publications</h2></div>
+    <div class="filters" role="group" aria-label="Show">
+      <button type="button" data-k="all" aria-pressed="true">all [7]</button>
+      <button type="button" data-k="J" aria-pressed="false">journal [2]</button>
+      <button type="button" data-k="C" aria-pressed="false">conference [2]</button>
+      <button type="button" data-k="R" aria-pressed="false">under_review [3]</button>
+    </div>
+    <div class="pubs">
+      <article class="pub" data-kind="R"><span class="k">[R]<small>in review</small></span><div><span class="ti">Adaptive LiDAR-Inertial Odometry with Online Estimation of Unknown IMU Disturbances</span><span class="au"><b class="me">M. Saberi</b>, H.-C. Wu, D. Ebeigbe</span><span class="ve">Submitted to <i>IEEE Robotics and Automation Letters</i></span></div><span></span></article>
+      <article class="pub" data-kind="R"><span class="k">[R]<small>in review</small></span><div><span class="ti">Adaptive Kalman Filter for Simultaneous Compensation of Unknown External Measurement Noise and Model Uncertainty</span><span class="au"><b class="me">M. Saberi</b>, D. Ebeigbe</span><span class="ve">Submitted to <i>IEEE Control Systems Letters</i></span></div><span></span></article>
+      <article class="pub" data-kind="R"><span class="k">[R]<small>in review</small></span><div><span class="ti">PRECONET: A Kalman-Filter-Inspired Predictor-Corrector State Estimator via Massively Parallel Reinforcement Learning</span><span class="au">H.-C. Wu, <b class="me">M. Saberi</b>, K. Sinaei, D. Ebeigbe</span><span class="ve">Submitted to <i>IEEE Robotics and Automation Letters</i></span></div><span></span></article>
+      <article class="pub" data-kind="J"><span class="k">[J]<small>2026</small></span><div><span class="ti">Adaptive Kalman Filtering for Unknown External Measurement Noise</span><span class="au"><b class="me">M. Saberi</b>, D. Ebeigbe</span><span class="ve"><i>IEEE Signal Processing Letters</i>, vol. 33, pp. 868–872, 2026</span></div><a class="go" href="https://doi.org/10.1109/LSP.2026.3657705">doi ↗</a></article>
+      <article class="pub" data-kind="C"><span class="k">[C]<small>2026</small></span><div><span class="ti">Reducing Observation Linearization Errors of the Extended Kalman Filter via Adaptation</span><span class="au"><b class="me">M. Saberi</b>, D. Ebeigbe</span><span class="ve"><i>2026 American Control Conference (ACC)</i>, New Orleans, LA, pp. 2805–2810</span></div><span></span></article>
+      <article class="pub" data-kind="J"><span class="k">[J]<small>2024</small></span><div><span class="ti">Nonlinear Kalman Filtering in the Absence of Direct Functional Relationships Between Measurement and State</span><span class="au">A. U. Alsaggaf, <b class="me">M. Saberi</b>, T. Berry, D. Ebeigbe</span><span class="ve"><i>IEEE Control Systems Letters</i>, vol. 8, pp. 2865–2870, 2024</span></div><a class="go" href="https://doi.org/10.1109/LCSYS.2024.3514818">doi ↗</a></article>
+      <article class="pub" data-kind="C"><span class="k">[C]<small>2021</small></span><div><span class="ti">A Machine Learning Based Smart Contact-less pH Sensing and Classification</span><span class="au"><b class="me">M. Saberi</b>, S. D. Gardner, M. R. Haider</span><span class="ve"><i>2021 IEEE International Midwest Symposium on Circuits and Systems (MWSCAS)</i>, Lansing, MI, pp. 1049–1052</span></div><a class="go" href="https://doi.org/10.1109/MWSCAS47672.2021.9531918">doi ↗</a></article>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sh"><span class="n">05</span><h2>Education</h2></div>
+    <div class="grid edu">
+      <div class="panel"><span class="y">2022 → 2027 (exp.)</span><h3>Ph.D., Electrical Engineering</h3><p class="s">Pennsylvania State University</p><p>CARL. Research: adaptive Kalman filtering, nonlinear estimation, robust LiDAR-inertial odometry, and compensation for unknown measurement and process disturbances.</p></div>
+      <div class="panel"><span class="y">2022 → 2024</span><h3>M.S., Electrical Engineering</h3><p class="s">Pennsylvania State University</p><p>Project: Adaptive Kalman Filtering for Systems Under the Influence of Unknown External Observation Noises.</p></div>
+      <div class="panel"><span class="y">2020 → 2021</span><h3>Doctoral studies</h3><p class="s">University of Alabama at Birmingham</p><p>BIC Design Laboratory. Research: low-cost printed sensing systems and energy-efficient integrated circuits.</p></div>
+      <div class="panel"><span class="y">2013 → 2016</span><h3>M.S., Biomedical Engineering</h3><p class="s">Islamic Azad University of Mashhad</p><p>Bioelectric, Neuromuscular and Rehabilitation Lab. Thesis: adaptive muscle synergy modeling for elbow muscle activation during hand reaching.</p></div>
+      <div class="panel"><span class="y">2008 → 2012</span><h3>B.S., Electrical Engineering</h3><p class="s">Sadjad University of Technology</p><p>Thesis: design and fabrication of an electrical nursing system for vital-sign monitoring.</p></div>
+      <div class="panel"><span class="y">award · 2024</span><h3>Melvin P. Bloom Memorial Graduate Fellowship</h3><p class="s">Electrical Engineering</p></div>
+    </div>
+  </section>
+
+  <div class="term" id="contact">
+    <div class="top"><i></i><i></i><i></i></div>
+<pre><span class="p">$</span> whoami
+Maryam Saberi, Ph.D. candidate in Electrical Engineering, Penn State
+<span class="p">$</span> status
+<span class="c"># Ph.D. expected Spring 2027</span>
+<span class="c"># happy to talk about roles in</span>
+<span class="c"># robotic localization, sensor</span>
+<span class="c"># fusion and state estimation</span>
+<span class="p">$</span> contact
+mfs6544@psu.edu</pre>
+    <div class="btns"><a class="btn primary" href="mailto:mfs6544@psu.edu">send email</a><a class="btn" href="https://linkedin.com/in/mrym-saberi">linkedin</a><a class="btn" href="Maryam_Saberi_CV.pdf">cv.pdf</a></div>
+  </div>
+</main>
+<footer><div class="wrap">© 2026 Maryam Saberi</div></footer>
+
+<script>
+// Phones: the menu button opens the links; picking one, pressing Escape or tapping elsewhere closes them.
+(function () {
+  const bar = document.querySelector('header.bar'), btn = bar.querySelector('.menu-btn');
+  const set = (open) => { bar.classList.toggle('open', open); btn.setAttribute('aria-expanded', String(open)); btn.textContent = open ? 'close' : 'menu'; };
+  btn.addEventListener('click', () => set(!bar.classList.contains('open')));
+  bar.querySelectorAll('nav a').forEach((a) => a.addEventListener('click', () => set(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') set(false); });
+  document.addEventListener('click', (e) => { if (!bar.contains(e.target)) set(false); });
+})();
+
+// Hero background: a slowly turning LiDAR scan. Each frame projects ground rings
+// and obstacle points into a pinhole camera; points just behind the sweep glow.
+(function () {
+  const c = document.getElementById('cloud'), ctx = c.getContext('2d');
+  const pts = [];
+  let seed = 11;
+  const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+  for (let r = 2.5; r < 32; r += 0.95) {
+    const n = Math.floor(r * 22);
+    for (let i = 0; i < n; i++) { const a = (i / n) * Math.PI * 2; pts.push([r * Math.cos(a), (rnd() - 0.5) * 0.06, r * Math.sin(a)]); }
+  }
+  for (const [bx, bz, w, d, h] of [[7, 4, 2.5, 1.6, 3], [-9, -5, 3, 2, 2.4], [3, -11, 1.6, 1.6, 4.2], [-5, 9, 4, 1.2, 2], [13, -4, 1.2, 3, 3.6], [-14, 3, 1.5, 1.5, 5]]) {
+    for (let i = 0; i < 320; i++) {
+      const f = Math.floor(rnd() * 4), u = rnd(), y = rnd() * h;
+      const x = f < 2 ? bx + (u - 0.5) * w : bx + (f === 2 ? -w / 2 : w / 2);
+      const z = f < 2 ? bz + (f === 0 ? -d / 2 : d / 2) : bz + (u - 0.5) * d;
+      pts.push([x, y, z]);
+    }
+  }
+  const camH = 11, D = 22, p = Math.atan2(camH, D), cp = Math.cos(p), sp = Math.sin(p);
+  let W = 0, H = 0;
+  function size() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = c.clientWidth; H = c.clientHeight;
+    c.width = W * dpr; c.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function draw(t) {
+    ctx.clearRect(0, 0, W, H);
+    const yaw = t * 0.00004, sweep = t * 0.0011, cy = Math.cos(yaw), sy = Math.sin(yaw);
+    const narrow = W <= 900;
+    const f = narrow ? W * 1.2 : Math.max(W, H) * 0.62, ox = narrow ? W * 0.78 : W * 0.64, oy = narrow ? H * 0.17 : H * 0.58;
+    for (const [x, y, z] of pts) {
+      const X = x * cy - z * sy, Z = x * sy + z * cy;
+      const ry = y - camH, rz = Z + D;
+      const yy = ry * cp + rz * sp, zz = -ry * sp + rz * cp;
+      if (zz < 1) continue;
+      const sx = ox + (f * X) / zz, sy2 = oy - (f * yy) / zz;
+      if (sx < 0 || sx > W || sy2 < 0 || sy2 > H) continue;
+      let d = (Math.atan2(z, x) - sweep) % (Math.PI * 2); if (d < 0) d += Math.PI * 2;
+      const glow = Math.exp(-(Math.PI * 2 - d) * 2.2);
+      const a = Math.min(1, Math.max(0, 1.5 - zz / 60)) * (0.45 + 0.55 * glow);
+      ctx.fillStyle = y > 0.2 ? `rgba(96,165,250,${a})` : `rgba(45,212,191,${a})`;
+      const s = 1.1 + 1.6 * glow;
+      ctx.fillRect(sx, sy2, s, s);
+    }
+    ctx.fillStyle = '#e6fffb';
+    const ey = oy - (f * (-camH * cp + D * sp)) / (camH * sp + D * cp);
+    ctx.beginPath(); ctx.arc(ox, ey, 4, 0, Math.PI * 2); ctx.fill();
+  }
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let on = true, raf = 0;
+  const loop = (t) => { draw(t); if (on && !still) raf = requestAnimationFrame(loop); };
+  size(); loop(9000);
+  addEventListener('resize', () => { size(); if (still) draw(9000); });
+  new IntersectionObserver(([e]) => { on = e.isIntersecting; cancelAnimationFrame(raf); if (on && !still) raf = requestAnimationFrame(loop); }).observe(c);
+})();
+
+// Publication filters.
+(function () {
+  const buttons = [...document.querySelectorAll('.filters button')];
+  const items = [...document.querySelectorAll('.pub')];
+  for (const b of buttons) b.addEventListener('click', () => {
+    for (const x of buttons) x.setAttribute('aria-pressed', String(x === b));
+    for (const i of items) i.hidden = b.dataset.k !== 'all' && i.dataset.kind !== b.dataset.k;
+  });
+})();
+
+// Highlight the menu link for the section on screen.
+(function () {
+  const links = [...document.querySelectorAll('header.bar nav a')];
+  const secs = links.map((a) => document.querySelector(a.hash));
+  function update() {
+    let cur = null;
+    for (const s of secs) if (s.getBoundingClientRect().top <= innerHeight * 0.3) cur = s;
+    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) cur = secs[secs.length - 1];
+    links.forEach((a, i) => a.classList.toggle('active', secs[i] === cur));
+  }
+  addEventListener('scroll', update, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>

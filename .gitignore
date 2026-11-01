@@ -1,0 +1,4 @@
+# Design options and local preview settings stay on this Mac, not on the website.
+designs/
+.claude/
+.DS_Store
