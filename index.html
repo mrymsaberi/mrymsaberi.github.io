@@ -100,8 +100,9 @@ h3 { font-family: var(--display); font-size: 19px; font-weight: 600; margin: 0; 
 .proj img, .proj video { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--line); }
 .proj img.tint { filter: hue-rotate(155deg) saturate(1.1); }
 .proj a.zoom { display: block; cursor: zoom-in; }
-/* plots are shown whole on white, never cropped */
-.proj img.plot, .proj video.plot { object-fit: contain; background: #fff; padding: 8px; filter: brightness(.85); }
+/* plots are shown whole, never cropped, and recoloured light-on-dark over the same teal backdrop the illustrations use */
+.proj a.plotwrap { background: radial-gradient(circle at 75% 30%, rgba(45,212,191,.30), transparent 60%), linear-gradient(135deg, #111619 0%, #0c2422 100%); border-bottom: 1px solid var(--line); }
+.proj img.plot, .proj video.plot { object-fit: contain; background: #fff; padding: 8px; border-bottom: 0; filter: invert(1) hue-rotate(180deg); mix-blend-mode: screen; }
 .proj .body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
 .proj .k { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 6px; }
 .proj p { color: var(--muted); font-size: 15px; margin: 8px 0 0; }
@@ -249,14 +250,14 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
           <span class="out">→ under review, IEEE RA-L</span></div>
       </article>
       <article class="panel proj">
-        <a class="zoom" href="media/akf-rmse.png" target="_blank" rel="noopener" aria-label="Open the RMSE figure full size"><img class="plot" src="media/akf-rmse.png" alt="Position and velocity RMSE over 300 seconds for AKF1, VBKF and AKF2, with AKF1 adaptation starting at 105 seconds" loading="lazy"></a>
+        <a class="zoom plotwrap" href="media/akf-rmse.png" target="_blank" rel="noopener" aria-label="Open the RMSE figure full size"><img class="plot" src="media/akf-rmse.png" alt="Position and velocity RMSE over 300 seconds for AKF1, VBKF and AKF2, with AKF1 adaptation starting at 105 seconds" loading="lazy"></a>
         <div class="body"><span class="k">adaptive filtering</span>
           <h3>Adaptive Kalman filtering for unknown noise</h3>
           <p>Developing adaptive Kalman filters capable of learning and compensating for the effects of unknown external measurement noise and model uncertainty.</p>
           <span class="out">→ <a href="https://doi.org/10.1109/LSP.2026.3657705">IEEE SPL 2026</a> · 1 under review</span></div>
       </article>
       <article class="panel proj">
-        <a class="zoom" href="media/bot-tracking.mp4" target="_blank" rel="noopener" aria-label="Open the bearings-only tracking animation full size"><video class="plot" src="media/bot-tracking.mp4" poster="media/bot-tracking-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Animated bearings-only target tracking: 2-D scene with two bearing sensors, the true state, EKF, UKF and AEKF position estimates, and position RMSE over 100 Monte Carlo runs"></video></a>
+        <a class="zoom plotwrap" href="media/bot-tracking.mp4" target="_blank" rel="noopener" aria-label="Open the bearings-only tracking animation full size"><video class="plot" src="media/bot-tracking.mp4" poster="media/bot-tracking-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Animated bearings-only target tracking: 2-D scene with two bearing sensors, the true state, EKF, UKF and AEKF position estimates, and position RMSE over 100 Monte Carlo runs"></video></a>
         <div class="body"><span class="k">nonlinear estimation</span>
           <h3>Nonlinear and learning-based estimation</h3>
           <p>Reducing the observation linearization errors of the extended Kalman filter through adaptation; nonlinear Kalman filtering when the measurements have no direct functional relationship to the state; and PRECONET, a Kalman-filter-inspired predictor-corrector estimator trained with massively parallel reinforcement learning.</p>
