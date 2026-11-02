@@ -99,6 +99,9 @@ h3 { font-family: var(--display); font-size: 19px; font-weight: 600; margin: 0; 
 /* hue-rotate turns the warm illustrations teal; remove .tint when you use real figures */
 .proj img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--line); }
 .proj img.tint { filter: hue-rotate(155deg) saturate(1.1); }
+.proj a.zoom { display: block; cursor: zoom-in; }
+/* plots are shown whole on white, never cropped */
+.proj img.plot { object-fit: contain; background: #fff; padding: 8px; }
 .proj .body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
 .proj .k { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 6px; }
 .proj p { color: var(--muted); font-size: 15px; margin: 8px 0 0; }
@@ -239,14 +242,14 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
     <div class="sh"><span class="n">02</span><h2>Research</h2></div>
     <div class="grid">
       <article class="panel proj">
-        <img src="media/point-lio-map.jpg" alt="LiDAR point cloud map of an outdoor area with the estimated trajectory shown in cyan" style="object-position: 15% 50%" loading="lazy">
+        <a class="zoom" href="media/point-lio-map.jpg" target="_blank" rel="noopener" aria-label="Open the Point-LIO map full size"><img src="media/point-lio-map.jpg" alt="LiDAR point cloud map of an outdoor area with the estimated trajectory shown in cyan" style="object-position: 15% 50%" loading="lazy"></a>
         <div class="body"><span class="k">lidar-inertial odometry</span>
           <h3>Robust Point-LIO under unknown IMU disturbances</h3>
           <p>Studied how unknown external IMU disturbances degrade Point-LIO localization, and developed an adaptive EKF that estimates and compensates for them online. A reduced-state formulation cuts the estimator state from 24 to 18 dimensions while still estimating the unknown sensor disturbances.</p>
           <span class="out">→ under review, IEEE RA-L</span></div>
       </article>
       <article class="panel proj">
-        <img class="tint" src="media/akf.svg" alt="Illustration: biased, noisy measurements and a filter estimate tracking the true signal" loading="lazy">
+        <a class="zoom" href="media/akf-rmse.png" target="_blank" rel="noopener" aria-label="Open the RMSE figure full size"><img class="plot" src="media/akf-rmse.png" alt="Position and velocity RMSE over 300 seconds for AKF1, VBKF and AKF2, with AKF1 adaptation starting at 105 seconds" loading="lazy"></a>
         <div class="body"><span class="k">adaptive filtering</span>
           <h3>Adaptive Kalman filtering for unknown noise</h3>
           <p>Developing adaptive Kalman filters capable of learning and compensating for the effects of unknown external measurement noise and model uncertainty.</p>
