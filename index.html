@@ -101,7 +101,7 @@ h3 { font-family: var(--display); font-size: 19px; font-weight: 600; margin: 0; 
 .proj img.tint { filter: hue-rotate(155deg) saturate(1.1); }
 .proj a.zoom { display: block; cursor: zoom-in; }
 /* plots are shown whole on white, never cropped */
-.proj img.plot, .proj video.plot { object-fit: contain; background: #fff; padding: 8px; }
+.proj img.plot, .proj video.plot { object-fit: contain; background: #fff; padding: 8px; filter: brightness(.85); }
 .proj .body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
 .proj .k { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 6px; }
 .proj p { color: var(--muted); font-size: 15px; margin: 8px 0 0; }
