@@ -97,11 +97,11 @@ h3 { font-family: var(--display); font-size: 19px; font-weight: 600; margin: 0; 
 .proj { padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
 .proj:hover { border-color: rgba(45,212,191,.5); transform: translateY(-2px); }
 /* hue-rotate turns the warm illustrations teal; remove .tint when you use real figures */
-.proj img { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--line); }
+.proj img, .proj video { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--line); }
 .proj img.tint { filter: hue-rotate(155deg) saturate(1.1); }
 .proj a.zoom { display: block; cursor: zoom-in; }
 /* plots are shown whole on white, never cropped */
-.proj img.plot { object-fit: contain; background: #fff; padding: 8px; }
+.proj img.plot, .proj video.plot { object-fit: contain; background: #fff; padding: 8px; }
 .proj .body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
 .proj .k { font-family: var(--mono); font-size: 12px; color: var(--accent); margin-bottom: 6px; }
 .proj p { color: var(--muted); font-size: 15px; margin: 8px 0 0; }
@@ -256,7 +256,7 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
           <span class="out">→ <a href="https://doi.org/10.1109/LSP.2026.3657705">IEEE SPL 2026</a> · 1 under review</span></div>
       </article>
       <article class="panel proj">
-        <img class="tint" src="media/nonlinear.svg" alt="Illustration: a nonlinear measurement function, its linearization and the resulting distributions" loading="lazy">
+        <a class="zoom" href="media/bot-tracking.mp4" target="_blank" rel="noopener" aria-label="Open the bearings-only tracking animation full size"><video class="plot" src="media/bot-tracking.mp4" poster="media/bot-tracking-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Animated bearings-only target tracking: 2-D scene with two bearing sensors, the true state, EKF, UKF and AEKF position estimates, and position RMSE over 100 Monte Carlo runs"></video></a>
         <div class="body"><span class="k">nonlinear estimation</span>
           <h3>Nonlinear and learning-based estimation</h3>
           <p>Reducing the observation linearization errors of the extended Kalman filter through adaptation; nonlinear Kalman filtering when the measurements have no direct functional relationship to the state; and PRECONET, a Kalman-filter-inspired predictor-corrector estimator trained with massively parallel reinforcement learning.</p>
@@ -428,6 +428,11 @@ Maryam Saberi, Ph.D. candidate in Electrical Engineering, Penn State
   addEventListener('resize', () => { size(); if (still) draw(9000); });
   new IntersectionObserver(([e]) => { on = e.isIntersecting; cancelAnimationFrame(raf); if (on && !still) raf = requestAnimationFrame(loop); }).observe(c);
 })();
+
+// Visitors who ask for less motion get the still preview instead of the looping video.
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('video[autoplay]').forEach((v) => { v.removeAttribute('autoplay'); v.pause(); });
+}
 
 // Publication filters.
 (function () {
