@@ -141,6 +141,15 @@ h3 { font-family: var(--display); font-size: 19px; font-weight: 600; margin: 0; 
 .award h3 { margin-top: 4px; }
 .award p { color: var(--muted); font-size: 14.5px; margin: 4px 0 0; }
 
+.service { display: grid; grid-template-columns: 1fr 1.4fr; gap: 14px; align-items: start; }
+.svc { list-style: none; margin: 14px 0 0; padding: 0; }
+.svc li { padding: 12px 0; border-top: 1px solid var(--line); }
+.svc li:first-child { border-top: 0; padding-top: 0; }
+.svc li:last-child { padding-bottom: 0; }
+.svc b { display: block; font-weight: 600; font-size: 15.5px; }
+.svc span { display: block; color: var(--muted); font-size: 14.5px; }
+.svc .d { font-family: var(--mono); font-size: 12.5px; color: var(--accent); margin-bottom: 2px; }
+
 /* contact as a terminal */
 .term { margin: 84px 0 0; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; background: var(--panel); }
 .term .top { display: flex; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--panel2); }
@@ -166,7 +175,7 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
   .hero h1 { font-size: 46px; }
   .stats { grid-template-columns: 1fr; }
   .stats li { border-right: 0; border-top: 1px solid var(--line); padding: 18px 0; }
-  .grid, .grid.edu, .skills { grid-template-columns: 1fr; }
+  .grid, .grid.edu, .skills, .service { grid-template-columns: 1fr; }
   .skills .panel, .skills .panel:nth-child(4), .skills .panel:nth-child(5) { grid-column: auto; }
   .sh h2 { font-size: 28px; }
   .tl .item { grid-template-columns: 1fr; gap: 4px; padding-left: 20px; }
@@ -180,7 +189,7 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="#">maryam<span>.</span>saberi</a>
-  <nav aria-label="Sections" id="site-menu"><a href="#expertise">expertise</a><a href="#research">research</a><a href="#experience">experience</a><a href="#publications">publications</a><a href="#education">education</a><a href="#awards">awards</a><a href="#contact">contact</a></nav>
+  <nav aria-label="Sections" id="site-menu"><a href="#expertise">expertise</a><a href="#research">research</a><a href="#experience">experience</a><a href="#publications">publications</a><a href="#education">education</a><a href="#awards">awards</a><a href="#service">service</a><a href="#contact">contact</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu">menu</button>
 </div></header>
 
@@ -298,6 +307,26 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
       <div class="panel award">
         <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 7.2 5-2.6 5 2.6-1.5-7.2"/></svg></span>
         <div><span class="y">spring 2024</span><h3>Melvin P. Bloom Memorial Graduate Fellowship</h3><p>Graduate fellowship in Electrical Engineering</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="service">
+    <div class="sh"><span class="n">07</span><h2>Academic Service</h2></div>
+    <div class="service">
+      <div class="panel"><h3>Reviewer</h3>
+        <ul class="svc">
+          <li><b>American Control Conference (ACC)</b></li>
+          <li><b>Conference on Decision and Control (CDC)</b></li>
+          <li><b>IEEE communications journal</b></li>
+        </ul>
+      </div>
+      <div class="panel"><h3>Service</h3>
+        <ul class="svc">
+          <li><span class="d">2026 competition</span><b>Judge, Pennsylvania Junior Academy of Science (PJAS)</b></li>
+          <li><span class="d">apr 2023 → apr 2025</span><b>Member, Graduate Student Advisory Committee</b></li>
+          <li><b>Graduate Student Representative, Faculty Hiring Process</b><span>Department of Electrical Engineering, Pennsylvania State University</span></li>
+        </ul>
       </div>
     </div>
   </section>
