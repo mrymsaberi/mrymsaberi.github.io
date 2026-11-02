@@ -141,6 +141,12 @@ h3 { font-family: var(--display); font-size: 19px; font-weight: 600; margin: 0; 
 .award h3 { margin-top: 4px; }
 .award p { color: var(--muted); font-size: 14.5px; margin: 4px 0 0; }
 
+.cert { display: flex; flex-direction: column; }
+.cert .y { font-family: var(--mono); font-size: 13px; color: var(--accent); }
+.cert h3 { margin-top: 6px; }
+.cert .s { color: var(--muted); font-size: 14.5px; margin: 4px 0 16px; }
+.cert .go { margin-top: auto; align-self: flex-start; font-family: var(--mono); font-size: 12.5px; white-space: nowrap; border: 1px solid var(--line); border-radius: 6px; padding: 5px 10px; }
+
 .service { display: grid; grid-template-columns: 1fr 1.4fr; gap: 14px; align-items: start; }
 .svc { list-style: none; margin: 14px 0 0; padding: 0; }
 .svc li { padding: 12px 0; border-top: 1px solid var(--line); }
@@ -189,7 +195,7 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
 <body>
 <header class="bar"><div class="wrap">
   <a class="brand" href="#">maryam<span>.</span>saberi</a>
-  <nav aria-label="Sections" id="site-menu"><a href="#expertise">expertise</a><a href="#research">research</a><a href="#experience">experience</a><a href="#publications">publications</a><a href="#education">education</a><a href="#awards">awards</a><a href="#service">service</a><a href="#contact">contact</a></nav>
+  <nav aria-label="Sections" id="site-menu"><a href="#expertise">expertise</a><a href="#research">research</a><a href="#experience">experience</a><a href="#publications">publications</a><a href="#education">education</a><a href="#certifications">certificates</a><a href="#awards">awards</a><a href="#service">service</a><a href="#contact">contact</a></nav>
   <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-menu">menu</button>
 </div></header>
 
@@ -301,8 +307,17 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
     </div>
   </section>
 
+  <section id="certifications">
+    <div class="sh"><span class="n">06</span><h2>Certifications</h2></div>
+    <div class="grid certs">
+      <div class="panel cert"><span class="y">may 2024</span><h3>Python Data Structures</h3><p class="s">University of Michigan · Coursera</p><a class="go" href="https://coursera.org/verify/2AA7MTP3Y2YW">verify ↗</a></div>
+      <div class="panel cert"><span class="y">apr 2024</span><h3>Programming for Everybody (Getting Started with Python)</h3><p class="s">University of Michigan · Coursera</p><a class="go" href="https://coursera.org/verify/AP67UA78HDSK">verify ↗</a></div>
+      <div class="panel cert"><span class="y">jun 2022</span><h3>Introduction to Programming with MATLAB</h3><p class="s">Vanderbilt University · Coursera</p><a class="go" href="https://coursera.org/verify/AQT7WM6LU4UR">verify ↗</a></div>
+    </div>
+  </section>
+
   <section id="awards">
-    <div class="sh"><span class="n">06</span><h2>Awards</h2></div>
+    <div class="sh"><span class="n">07</span><h2>Awards</h2></div>
     <div class="awards">
       <div class="panel award">
         <span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.8-1.5 7.2 5-2.6 5 2.6-1.5-7.2"/></svg></span>
@@ -312,7 +327,7 @@ footer { color: var(--muted); font-family: var(--mono); font-size: 12.5px; paddi
   </section>
 
   <section id="service">
-    <div class="sh"><span class="n">07</span><h2>Academic Service</h2></div>
+    <div class="sh"><span class="n">08</span><h2>Academic Service</h2></div>
     <div class="service">
       <div class="panel"><h3>Reviewer</h3>
         <ul class="svc">
